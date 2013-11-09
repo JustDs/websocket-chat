@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link href="static/css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="static/css/index.css" rel="stylesheet" type="text/css" />
+	<script src="static/js/index.js" type="text/javascript"></script>
+	<title>WebSocket通信</title>
+</head>
+<body>
+	<div class="cover" id="connect-panel">
+		<input type="text" class="textbox control" id="server-address" value="ws://echo.websocket.org" />
+		<a class="button control" id="btn-open" href="#">开启通信连接</a>
+	</div>
+	<div class="wrap">
+		<div class="banner header">
+			<div class="align-right"><a class="button" id="btn-close" href="#">离开</a></div>
+			<p class="title">通信中</p>
+		</div>
+		<div class="main">
+			<ul id="message-list">
+			</ul>
+		</div>
+		<div class="banner footer">
+			<div class="align-right">
+				<textarea class="textbox" id="message" rows="1"></textarea>
+				<a class="button" id="btn-send" href="#">发送</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
