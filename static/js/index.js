@@ -2,6 +2,18 @@
 
 	document.addEventListener('DOMContentLoaded', function (event) {
 
+		var appendMessage = function (messageHtml) {
+
+			var container = document.getElementById('message-wrap');
+			var messageList = document.getElementById('message-list');
+
+			var originalHeight = container.scrollHeight;
+
+			messageList.insertAdjacentHTML('beforeend', messageHtml);
+
+			container.scrollTop = container.scrollHeight;
+		}
+
 		var connection = null;
 
 		document.getElementById('btn-open').addEventListener('click', function (event) {
@@ -27,10 +39,7 @@
 
 					console.log('Message received: "' + event.data + '"');
 
-					var html = '<li class="received-message">' + event.data + '</li>';
-
-					document.getElementById('message-list')
-						.insertAdjacentHTML('beforeend', html);
+					appendMessage('<li class="received-message">' + event.data + '</li>');
 				});
 
 				connection.addEventListener('close', function (event) {
@@ -68,10 +77,7 @@
 
 			if (connection && message.length) {
 
-				var html = '<li class="sent-message">' + message + '</li>';
-
-				document.getElementById('message-list')
-					.insertAdjacentHTML('beforeend', html);
+				appendMessage('<li class="sent-message">' + message + '</li>');
 
 				connection.send(message);
 

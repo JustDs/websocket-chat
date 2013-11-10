@@ -48,6 +48,7 @@
 .banner
 {
 	position: relative;
+	z-index: 100;
 	border-top: #444 1px solid;
 	border-bottom: #444 1px solid;
 	border-color: #1070C0;
@@ -60,7 +61,7 @@
 		justify-content: center;
 		align-items: center;
 		position: absolute;
-		z-index: 10;
+		z-index: 200;
 		left: 0;
 		top: 0;
 		height: 100%;
@@ -76,7 +77,7 @@
 		display: flex;
 		align-items: center;
 		position: relative;
-		z-index: 20;
+		z-index: 300;
 
 		&.align-left
 		{
@@ -168,9 +169,8 @@ body
 
 			ul
 			{
-				list-style: none;
-				.clearfix ();
 				margin: 0.8em 0;
+				.clearfix ();
 
 				li
 				{
