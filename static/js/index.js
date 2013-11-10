@@ -2,27 +2,35 @@
 
 	document.addEventListener('DOMContentLoaded', function (event) {
 
+		var messageBox = document.getElementById('message-box');
+		var sendButton = document.getElementById('btn-send');
+		var addressBox = document.getElementById('server-address');
+		var openButton = document.getElementById('btn-open');
+		var closeButton = document.getElementById('btn-close');
+		var connectPanel = document.getElementById('connect-panel');
+		var messageWrap = document.getElementById('message-wrap');
+		var messageList = document.getElementById('message-list');
+
+
 		var appendMessage = function (messageHtml) {
 
-			var container = document.getElementById('message-wrap');
-			var messageList = document.getElementById('message-list');
 
-			var originalHeight = container.scrollHeight;
+			var originalHeight = messageWrap.scrollHeight;
 
 			messageList.insertAdjacentHTML('beforeend', messageHtml);
 
-			container.scrollTop = container.scrollHeight;
+			messageWrap.scrollTop = messageWrap.scrollHeight;
 		}
 
 		var connection = null;
 
-		document.getElementById('btn-open').addEventListener('click', function (event) {
+		openButton.addEventListener('click', function (event) {
 
 			event.preventDefault();
 
 			if (!connection) {
 
-				var address = document.getElementById('server-address').value;
+				var address = addressBox.value;
 
 				connection = new WebSocket(address);
 
@@ -30,9 +38,9 @@
 
 					console.log('Connection opened.');
 
-					document.getElementById('message-list').innerHTML = '';
+					openButton.innerHTML = '';
 
-					document.getElementById('connect-panel').classList.add('folded');
+					connectPanel.classList.add('folded');
 				});
 
 				connection.addEventListener('message', function (event) {
@@ -55,7 +63,7 @@
 			}
 		});
 
-		document.getElementById('btn-close').addEventListener('click', function (event) {
+		closeButton.addEventListener('click', function (event) {
 
 			event.preventDefault();
 
@@ -65,15 +73,15 @@
 
 				connection = null;
 
-				document.getElementById('connect-panel').classList.remove('folded');
+				connectPanel.classList.remove('folded');
 			}
 		});
 
-		document.getElementById('btn-send').addEventListener('click', function (event) {
+		sendButton.addEventListener('click', function (event) {
 
 			event.preventDefault();
 
-			var message = document.getElementById('message').value;
+			var message = messageBox.value;
 
 			if (connection && message.length) {
 
@@ -81,8 +89,19 @@
 
 				connection.send(message);
 
-				document.getElementById('message').value = '';
-				document.getElementById('message').focus();
+				messageBox.value = '';
+				messageBox.rows = 1;
+				messageBox.focus();
+			}
+		});
+
+		messageBox.addEventListener('input', function (event) {
+
+			messageBox.rows = 1;
+
+			while (messageBox.scrollHeight > messageBox.clientHeight && messageBox.rows < 3 ) {
+
+				messageBox.rows++;
 			}
 		});
 	});
