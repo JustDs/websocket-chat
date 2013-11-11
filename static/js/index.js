@@ -12,12 +12,10 @@
 		var messageList = document.getElementById('message-list');
 
 
-		var appendMessage = function (messageHtml) {
+		var appendMessage = function (type, message) {
 
-
-			var originalHeight = messageWrap.scrollHeight;
-
-			messageList.insertAdjacentHTML('beforeend', messageHtml);
+			messageList.insertAdjacentHTML('beforeend',
+				'<li class="' + type + '">' + message.replace(/\n/g, '<br />') + '</li>');
 
 			messageWrap.scrollTop = messageWrap.scrollHeight;
 		}
@@ -47,7 +45,7 @@
 
 					console.log('Message received: "' + event.data + '"');
 
-					appendMessage('<li class="received-message">' + event.data + '</li>');
+					appendMessage('received-message', event.data);
 				});
 
 				connection.addEventListener('close', function (event) {
@@ -85,7 +83,7 @@
 
 			if (connection && message.length) {
 
-				appendMessage('<li class="sent-message">' + message + '</li>');
+				appendMessage('sent-message', message);
 
 				connection.send(message);
 
