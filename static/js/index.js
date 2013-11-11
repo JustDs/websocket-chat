@@ -14,8 +14,19 @@
 
 		var appendMessage = function (type, message) {
 
-			messageList.insertAdjacentHTML('beforeend',
-				'<li class="' + type + '">' + message.replace(/\n/g, '<br />') + '</li>');
+			var messageElement = document.createElement('li');
+
+			messageElement.innerHTML = message.replace(/\n/g, '<br />');
+			messageElement.classList.add(type);
+			messageElement.classList.add('hidden');
+
+			messageList.appendChild(messageElement);
+
+			setTimeout(function (argument) {
+
+				messageElement.classList.remove('hidden');
+
+			}, 1);
 
 			messageWrap.scrollTop = messageWrap.scrollHeight;
 		}
@@ -36,7 +47,7 @@
 
 					console.log('Connection opened.');
 
-					openButton.innerHTML = '';
+					messageList.innerHTML = '';
 
 					connectPanel.classList.add('folded');
 				});
@@ -89,8 +100,9 @@
 
 				messageBox.value = '';
 				messageBox.rows = 1;
-				messageBox.focus();
 			}
+
+			messageBox.focus();
 		});
 
 		messageBox.addEventListener('input', function (event) {

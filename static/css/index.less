@@ -175,6 +175,7 @@ body
 				li
 				{
 					position: relative;
+					top: 0;
 					clear: both;
 					max-width: 70%;
 					margin: 0.3em 0.7em 0.7em;
@@ -185,6 +186,14 @@ body
 					line-height: 1.5em;
 					word-wrap: break-word;
 					text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.1);
+					opacity: 1;
+					transition: top 0.35s ease-in-out, opacity 0.35s ease-in-out;
+
+					&.hidden
+					{
+						top: 0.4em;
+						opacity: 0;
+					}
 
 					&.sent-message
 					{
