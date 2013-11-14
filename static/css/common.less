@@ -37,14 +37,14 @@
 
 .text-shadow (@shadow-style: none)
 {
-	text-shadow: @shadow-style;
+	text-shadow+: @shadow-style;
 }
 
 .box-shadow (@shadow-style: none)
 {
-	-webkit-box-shadow: @shadow-style;
-	-moz-box-shadow: @shadow-style;
-	box-shadow: @shadow-style;
+	-webkit-box-shadow+: @shadow-style;
+	-moz-box-shadow+: @shadow-style;
+	box-shadow+: @shadow-style;
 }
 
 .box-sizing (@type: border-box)
@@ -60,43 +60,34 @@
 	opacity: @opacity;
 }
 
-.linear-gradient (@gradient-style: ~"top, transparent, transparent") {
+.linear-gradient (@gradient-style: none) {
 	background: -webkit-linear-gradient(@gradient-style);
 	background: -moz-linear-gradient(@gradient-style);
 	background: -ms-linear-gradient(@gradient-style);
 	background: -o-linear-gradient(@gradient-style);
 }
 
-.vertical-gradient (@topColor: transparent, @bottomColor: transparent) {
-	background-color: @topColor;
-	background: -webkit-gradient(linear, left top, left bottom, from(@topColor), to(@bottomColor));
-	background: -webkit-linear-gradient(top, @topColor, @bottomColor);
-	background: -moz-linear-gradient(top, @topColor, @bottomColor);
-	background: -ms-linear-gradient(top, @topColor, @bottomColor);
-	background: -o-linear-gradient(top, @topColor, @bottomColor);
+.radial-gradient (@gradient-style: none) {
+	background: -webkit-radial-gradient(@gradient-style);
+	background: -moz-radial-gradient(@gradient-style);
+	background: -ms-radial-gradient(@gradient-style);
+	background: -o-radial-gradient(@gradient-style);
 }
 
-.horizontal-gradient (@leftColor: transparent, @rightColor: transparent) {
- 	background-color: @leftColor;
-	background-image: -webkit-gradient(linear, left top, right top, from(@leftColor), to(@rightColor));
-	background-image: -webkit-linear-gradient(left, @leftColor, @rightColor);
-	background-image: -moz-linear-gradient(left, @leftColor, @rightColor);
-	background-image: -ms-linear-gradient(left, @leftColor, @rightColor);
-	background-image: -o-linear-gradient(left, @leftColor, @rightColor);
-}
-
-.transform (@options)
+.transform (@transform)
 {
-	-webkit-transform: @options;
-	-moz-transform: @options;
-	-ms-transform: @options;
-	-o-transform: @options;
+	-webkit-transform+: @transform;
+	-moz-transform+: @transform;
+	-ms-transform+: @transform;
+	-o-transform+: @transform;
+	transform+: @transform;
 }
 
-.transition (@options)
+.transition (@transition)
 {
-	-moz-transition: @options;
-	-webkit-transition: @options;
-	-o-transition: @options;
-	transition: @options;
+	-webkit-transition+: @transition;
+	-moz-transition+: @transition;
+	-ms-transition+: @transition;
+	-o-transition+: @transition;
+	transition+: @transition;
 }
