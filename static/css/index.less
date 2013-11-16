@@ -2,6 +2,7 @@
 
 .button
 {
+	display: block;
 	border: #1070C0 1px solid;
 	.border-radius (0.25em);
 	.box-shadow (inset 0 0.08em 0 rgba(255, 255, 255, 0.15), 0 0.08em 0 rgba(0, 0, 0, 0.05););
@@ -29,6 +30,7 @@
 
 .textbox
 {
+	display: block;
 	padding: 0.6em 0.8em;
 	border: #1070C0 1px solid;
 	.border-radius (0.3em);
@@ -57,9 +59,9 @@
 
 	p.title
 	{
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		.display-flex ();
+		.justify-content (center);
+		.align-items (center);
 		position: absolute;
 		z-index: 200;
 		left: 0;
@@ -74,19 +76,19 @@
 
 	&>div
 	{
-		display: flex;
-		align-items: center;
+		.display-flex ();
+		.align-items (center);
 		position: relative;
 		z-index: 300;
 
 		&.align-left
 		{
-			justify-content: flex-start;
+			.justify-content (flex-start);
 		}
 
 		&.align-right
 		{
-			justify-content: flex-end;
+			.justify-content (flex-end);
 		}
 
 		&>*
@@ -106,9 +108,9 @@ body
 
 	.cover
 	{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		.display-flex ();
+		.flex-flow (column);
+		.justify-content (center);
 		position: absolute;
 		z-index: 10000;
 		left: 0;
@@ -117,7 +119,8 @@ body
 		height: 110%;
 		border-bottom: #1070C0 1px solid;
 		.box-shadow (inset 0 -0.08em 0 rgba(255, 255, 255, 0.15), 0 0.16em 0.7em rgba(0, 0, 0, 0.75););
-		background: -webkit-radial-gradient(center, cover, #4290D8, #2580C5);
+		.linear-gradient (#2580C5, #4290D8, #2580C5;);
+		.radial-gradient (center, cover, #4290D8, #2580C5;);
 		.transition (top 0.55s ease-in-out);
 
 		&.folded
@@ -127,8 +130,8 @@ body
 
 		.control
 		{
-			flex: 0 0 auto;
-			align-self: stretch;
+			display: block;
+			.flex (0, 0, auto);
 			margin: 1.0em 2.2em;
 			font-size: 1.2em;
 		}
@@ -136,8 +139,8 @@ body
 
 	.wrap
 	{
-		display: flex;
-		flex-direction: column;
+		.display-flex ();
+		.flex-flow (column);
 		width: 100%;
 		height: 100%;
 		margin: 0 auto;
@@ -145,7 +148,7 @@ body
 
 		header
 		{
-			flex: 0 0 auto;
+			.flex (0, 0, auto);
 			font-size: 1.1em;
 
 			.button
@@ -157,7 +160,7 @@ body
 
 		.main
 		{
-			flex: 1 1 auto;
+			.flex (1, 1, auto);
 			overflow-y: auto;
 
 			ul
@@ -209,14 +212,19 @@ body
 
 		footer
 		{
-			flex: 0 0 auto;
+			.flex (0, 0, auto);
 			font-size: 1.1em;
+
+			.button
+			{
+				.flex (0, 0, auto);
+			}
 
 			.textbox
 			{
-				width: 0;
+				.flex (1, 1, auto);
+				width: 100%;
 				margin-right: 0;
-				flex-grow: 1;
 			}
 		}
 	}
