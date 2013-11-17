@@ -113,6 +113,8 @@
 
 				messageBox.rows++;
 			}
+
+			messageBox.classList.toggle('refresh');
 		});
 	});
 
